@@ -107,6 +107,11 @@ span.collapsing{
 		margin-bottom: 1rem;
 	}
 
+	header h3{
+		font-size: 1.25rem;
+		line-height: initial;
+	}
+
 	.nav{
 		flex-direction: column;
     	text-align: center;
