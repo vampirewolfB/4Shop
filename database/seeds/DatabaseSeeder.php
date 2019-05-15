@@ -104,7 +104,7 @@ class DatabaseSeeder extends Seeder
 
         $product = new Product();
         $product->title = 'T-shirt jeugdleden';
-        $product->description = 'T-shirt van goede kwaliteit. Alleen een logo voor op de borst. Als aanvulling op het uniform, mag niet in plaats van de blouse gedragen worden.';
+        $product->description = 'T-shirt van goede kwaliteit. Alleen een logo voor op de borst. Aanvulling op het uniform, niet bedoeld als vervanger van de blouse.';
         $product->price = 7.50;
         $product->leiding = false;
         $product->image = 'img/jeugd.jpg';
