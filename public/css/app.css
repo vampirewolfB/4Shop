@@ -97,14 +97,19 @@ span.collapsing{
 	display: block;
 }
 
+.cart{
+	height: 30px;
+}
+
 @media (max-width: 576px) {
 	h1{
 		font-size: 8vw;
 	}
 
 	header{
-		flex-direction: column-reverse;
+		flex-direction: column;
 		margin-bottom: 1rem;
+		text-align: center;
 	}
 
 	header h3{
@@ -129,5 +134,9 @@ span.collapsing{
 		width: 100%;
 		padding: 0;
 		padding-top: 1em;
+	}
+
+	.cart{
+		height: 24px;
 	}
 }

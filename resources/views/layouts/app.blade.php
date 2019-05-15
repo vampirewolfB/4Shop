@@ -18,8 +18,9 @@
 </head>
 <body>
     <div class="container">
-      <header class="header">
+      <header class="header d-flex justify-content-between align-items-center">
         <h3 class="text-muted"><a href="{{ route('home') }}" class="no-link">Winkel van Scouting Raamsdonksveer</a></h3>
+        <a href="{{ route('cart') }}"><img class="cart" src="{{ url('img/cart.png') }}" alt=""></a>
       </header>
 
       <main role="main">

@@ -14,6 +14,7 @@ class OrderController extends Controller
     public function cart(Request $request)
     {
         $cart = $this->getCart();
+        if(!$cart) return redirect()->route('shop');
         return view('orders.cart')
                 ->with(compact('cart'));
     }
@@ -90,7 +91,7 @@ class OrderController extends Controller
     private function getCart()
     {
         $cart = session('cart');
-        if(empty($cart)) return redirect()->route('shop');
+        if(empty($cart)) return false;
 
         foreach ($cart as $key => $rule)
         { 
