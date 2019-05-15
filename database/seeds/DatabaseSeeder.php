@@ -195,6 +195,31 @@ class DatabaseSeeder extends Seeder
             $size->save();
         }
 
+        /////////////////////////////////
+
+        $product = new Product();
+        $product->title = 'Keycord';
+        $product->description = 'Keycord met logo\'s van Scouting Raamsdonksveer';
+        $product->price = 1.00;
+        $product->leiding = false;
+        $product->image = 'img/keycords.jpg';
+        $product->save();
+
+        $type = new Type();
+        $type->product_id = $product->id;
+        $type->title = "Standaard";
+        $type->description = "";
+        $type->save();
+
+        $sizes = ["Standaard"];
+        foreach ($sizes as $item)
+        {
+            $size = new Size();
+            $size->type_id = $type->id;
+            $size->title = $item;
+            $size->save();
+        }
+
 
     }
 }
