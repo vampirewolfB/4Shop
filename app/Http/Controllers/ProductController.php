@@ -15,10 +15,15 @@ class ProductController extends Controller
         {
             return view('home');
         }
+        elseif($request->route()->getName() == 'leden')
+        {
+            session(['type' => 'leden']);
+        }
+        elseif($request->route()->getName() == 'leiding')
+        {
+            session(['type' => 'leiding']);
+        }
 
-        //determine 'leden' or 'leiding'
-        $type = $request->route()->getName();
-        session(['type' => $type]);
         return redirect()->route('shop');
     }
 
