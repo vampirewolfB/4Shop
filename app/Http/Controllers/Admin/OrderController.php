@@ -5,83 +5,37 @@ namespace App\Http\Controllers\Admin;
 use App\OpeningDates;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Order;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return "hi!";
+        $date = OpeningDates::find(session('date'));
+        return view('admin.orders')
+                ->with('date', $date)
+                ->with('orders', $date->orders);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function show(Order $order)
     {
-        //
+        $date = OpeningDates::find(session('date'));
+        return view('admin.order')
+                ->with('date', $date)
+                ->with(compact('order'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function deliver(Order $order)
     {
-        //
+        $order->delivered = $order->delivered ?: true;
+        $order->save();
+        return redirect()->route('admin.orders.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\OpeningDates  $openingDates
-     * @return \Illuminate\Http\Response
-     */
-    public function show(OpeningDates $openingDates)
+    public function destroy(Order $order, Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\OpeningDates  $openingDates
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(OpeningDates $openingDates)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\OpeningDates  $openingDates
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, OpeningDates $openingDates)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\OpeningDates  $openingDates
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(OpeningDates $openingDates)
-    {
-        //
+        $order->delete();
+        $request->session()->flash('status', ['success', 'Bestelling verwijderd!']);
+        return redirect()->route('admin.orders.index');
     }
 }

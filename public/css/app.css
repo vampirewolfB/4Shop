@@ -101,6 +101,10 @@ span.collapsing{
 	height: 30px;
 }
 
+.nav-link{
+	color: white !important;
+}
+
 @media (max-width: 576px) {
 	h1{
 		font-size: 8vw;

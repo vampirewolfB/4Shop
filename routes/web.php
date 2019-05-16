@@ -42,7 +42,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::post('/set', 'Admin\AdminController@set')->name('admin.set');
     
     Route::group(['middleware' => 'dateset'], function () {
-        Route::resource('orders', 'Admin\OrderController', ['as' => 'admin']);
+        Route::resource('orders', 'Admin\OrderController', ['as' => 'admin'])->only(['index', 'show', 'destroy']);
+        Route::get('orders/{order}/deliver', 'Admin\OrderController@deliver')->name('admin.orders.deliver');
     });
 
 });
