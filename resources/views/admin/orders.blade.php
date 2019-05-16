@@ -2,7 +2,7 @@
 
 @section('content')
 	
-	<h4>Bestellingen</h4>
+	<h4>Bestellingen ({{ $date->start->toFormattedDateString() }} - {{ $date->end->toFormattedDateString() }})</h4>
 	<table class="table table-striped table-hover">
 		<tr>
 			<th>#</th>

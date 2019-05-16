@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\OpeningDates;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class OpeningDatesController extends Controller
 {
@@ -24,7 +25,7 @@ class OpeningDatesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.newdate');
     }
 
     /**
@@ -35,7 +36,16 @@ class OpeningDatesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'start' => 'required|date',
+            'end' => 'required|date'
+        ]);
+
+        $date = new OpeningDates();
+        $date->start = $request->start; 
+        $date->end = $request->end;
+        $date->save();
+        return redirect()->route('admin.home');
     }
 
     /**

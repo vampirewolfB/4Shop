@@ -20,7 +20,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success d-flex justify-content-between">
-        <span class="navbar-brand">Winkel ({{ $date->start->toFormattedDateString() }} - {{ $date->end->toFormattedDateString() }})</span>
+        <a href="{{ route('admin.home') }}" class="navbar-brand">Winkel</a>
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.orders.index') }}">Bestellingen</a>
@@ -30,6 +30,9 @@
             </li>
             <li class="nav-item">
                 <span class="nav-link">Accounts</span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link">Winkelperiodes</span>
             </li>
         </ul>
     </nav>
