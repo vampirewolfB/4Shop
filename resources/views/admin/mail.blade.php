@@ -2,16 +2,18 @@
 
 @section('content')
 	
-	<div class="d-flex justify-content-between align-items-center my-4">
-		<h4>Bestellingen ({{ $date->start->toFormattedDateString() }} - {{ $date->end->toFormattedDateString() }})</h4>
-		<div>
-			<a href="{{ route('admin.orders.factory') }}" target="_blank">Bekijk overzicht voor producent &gt;</a><br />
-			<a href="{{ route('admin.orders.mail') }}">Verstuur mails over ophalen &gt;</a>
-		</div>
-		
-	</div>
-	
-	<table class="table table-striped table-hover">
+
+	<h4>Mails versturen ({{ $date->start->toFormattedDateString() }} - {{ $date->end->toFormattedDateString() }})</h4>
+	<p>Onderstaande bestellers ontvangen een mail dat hun bestelling klaar ligt. De tekst onder het kopje <em>ophalen</em> moet je hieronder zelf nog invullen.</p>
+
+	<form action="{{ route('admin.orders.mail.send') }}" method="POST">
+		<p class="m-0"><strong>Ophalen</strong></p>
+		<textarea name="pickup" id="" cols="30" rows="5" class="form-control">De bestelling is op te halen op het Scoutinggebouw, bij voorkeur aanstaande zaterdag om 12.00u. Daarna iedere zaterdag voor of na de opkomst. Vraag er even naar bij je speltakleiding!</textarea>
+		<button type="submit" class="btn btn-success mt-3">Verstuur e-mails</button>
+		{{ csrf_field() }}
+	</form>
+
+	<table class="table table-striped table-hover mt-5">
 		<tr>
 			<th>#</th>
 			<th>Naam</th>

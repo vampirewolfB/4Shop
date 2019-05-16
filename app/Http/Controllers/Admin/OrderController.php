@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use App\Order_rule;
 use DB;
+use Mail;
 
 class OrderController extends Controller
 {
@@ -53,5 +54,25 @@ class OrderController extends Controller
         return view('admin.factory')
                 ->with('date', $date)
                 ->with(compact('rules'));
+    }
+
+    public function mail()
+    {
+        $date = OpeningDates::find(session('date'));
+        return view('admin.mail')
+                ->with('date', $date)
+                ->with('orders', $date->orders()->where('payed', true)->get());
+    }
+
+    public function mail_send(Request $request)
+    {
+        $date = OpeningDates::find(session('date'));
+        $orders = $date->orders()->where('payed', true)->get();
+        $pickup = $request->pickup;
+
+        foreach($orders as $order)
+        {
+            Mail::to($order->email)->send(new \App\Mail\OrderReady($order, $pickup));
+        }
     }
 }
