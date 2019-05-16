@@ -35,3 +35,18 @@ Route::group(['middleware' => 'shopopen'], function () {
     Route::get('/ideal/webhook/{order}', 'IdealController@webhook');
 
 });
+
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
+
+    Route::get('/', 'Admin\AdminController@index')->name('admin.home');
+    Route::post('/set', 'Admin\AdminController@set')->name('admin.set');
+    
+    Route::group(['middleware' => 'dateset'], function () {
+        Route::resource('orders', 'Admin\OrderController', ['as' => 'admin']);
+    });
+
+});
+
+Auth::routes(['register' => false]);
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -56,6 +56,7 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'dateset' => \App\Http\Middleware\CheckDateSet::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'shopopen' => \App\Http\Middleware\CheckShopOpen::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,

@@ -5,6 +5,7 @@ use App\OpeningDates;
 use App\Product;
 use App\Type;
 use App\Size;
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +16,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        $user = new User();
+        $user->name = "Bart Roos";
+        $user->email = "winkelbeheer@scoutingrveer.nl";
+        $user->password = "$2y$10$Qv9.R7i3w1eDLbDfwegHHO4oGPyjuBL8kHPTtgA0PeJi.P8Kuetk.";
+        $user->save();
+
+        /////////////////////////////////
+
         $dates = new OpeningDates();
         $dates->start = '2019-04-01';
         $dates->end = '2019-06-01';
