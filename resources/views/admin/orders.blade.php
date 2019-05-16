@@ -2,7 +2,11 @@
 
 @section('content')
 	
-	<h4>Bestellingen ({{ $date->start->toFormattedDateString() }} - {{ $date->end->toFormattedDateString() }})</h4>
+	<div class="d-flex justify-content-between align-items-center">
+		<h4>Bestellingen ({{ $date->start->toFormattedDateString() }} - {{ $date->end->toFormattedDateString() }})</h4>
+		<a href="{{ route('admin.orders.factory') }}" target="_blank">Bekijk overzicht voor producent &gt;</a>
+	</div>
+	
 	<table class="table table-striped table-hover">
 		<tr>
 			<th>#</th>

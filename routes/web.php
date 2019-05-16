@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::resource('dates', 'Admin\OpeningDatesController', ['as' => 'admin']);
     
     Route::group(['middleware' => 'dateset'], function () {
+        Route::get('orders/factory', 'Admin\OrderController@factory')->name('admin.orders.factory');
         Route::resource('orders', 'Admin\OrderController', ['as' => 'admin'])->only(['index', 'show', 'destroy']);
         Route::get('orders/{order}/deliver', 'Admin\OrderController@deliver')->name('admin.orders.deliver');
     });

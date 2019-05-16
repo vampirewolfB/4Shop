@@ -12,4 +12,9 @@ class OpeningDates extends Model
     {
     	return $this->hasMany('App\Order', 'opening_id');
     }
+
+    public function rules()
+    {
+    	return $this->hasManyThrough('App\Order_rule', 'App\Order', 'opening_id');
+    }
 }
