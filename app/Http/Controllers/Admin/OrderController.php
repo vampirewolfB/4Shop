@@ -49,9 +49,7 @@ class OrderController extends Controller
         $rules = Order_rule::
             select(DB::raw('count(id) AS count, description, size'))
             ->whereRaw('order_id IN (SELECT id FROM orders WHERE opening_id = ' . $date->id . ' AND payed = 1)')
-            ->groupBy('description', 'size')->toSql();
-
-        return $rules;
+            ->groupBy('description', 'size')->get();
 
         return view('admin.factory')
                 ->with('date', $date)
