@@ -24,8 +24,8 @@
 			<a href="{{ route('admin.products.edit', $product) }}">Product-info aanpassen &gt;</a>
 		</p>
 	</div>
-	<div class="ml-5">
-		<img src="{{ url($product->image) ?? url('img/placeholder.png') }}" alt="{{ $product->title }}" class="rounded">
+	<div class="ml-5 w-50 text-right">
+		<img src="{{ url($product->image) ?? url('img/placeholder.png') }}" alt="{{ $product->title }}" class="rounded mw-100">
 	</div>
 </div>
 <hr class="my-5">
