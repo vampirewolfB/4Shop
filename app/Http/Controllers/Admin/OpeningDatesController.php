@@ -8,32 +8,20 @@ use App\Http\Controllers\Controller;
 
 class OpeningDatesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $dates = OpeningDates::orderBy('start', 'desc')->get();
+        return view('admin.dates.index')
+                ->with(compact('dates'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
+        session()->flash('url', $request->server('HTTP_REFERER'));  
         return view('admin.newdate');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate(request(), [
@@ -45,51 +33,31 @@ class OpeningDatesController extends Controller
         $date->start = $request->start; 
         $date->end = $request->end;
         $date->save();
-        return redirect()->route('admin.home');
+        return redirect(session('url'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\OpeningDates  $openingDates
-     * @return \Illuminate\Http\Response
-     */
-    public function show(OpeningDates $openingDates)
+    public function edit(OpeningDates $date)
     {
-        //
+        return view('admin.dates.edit')
+                ->with(compact('date'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\OpeningDates  $openingDates
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(OpeningDates $openingDates)
+    public function update(Request $request, OpeningDates $date)
     {
-        //
+        $this->validate(request(), [
+            'start' => 'required|date',
+            'end' => 'required|date'
+        ]);
+
+        $date->start = $request->start; 
+        $date->end = $request->end;
+        $date->save();
+        return redirect()->route('admin.dates.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\OpeningDates  $openingDates
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, OpeningDates $openingDates)
+    public function destroy(OpeningDates $date)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\OpeningDates  $openingDates
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(OpeningDates $openingDates)
-    {
-        //
+        $date->delete();
+        return redirect()->route('admin.dates.index');
     }
 }

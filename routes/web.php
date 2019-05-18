@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 
     Route::get('/', 'Admin\AdminController@index')->name('admin.home');
     Route::post('/set', 'Admin\AdminController@set')->name('admin.set');
-    Route::resource('dates', 'Admin\OpeningDatesController', ['as' => 'admin']);
+    Route::resource('dates', 'Admin\OpeningDatesController', ['as' => 'admin'])->except('show');
     
     Route::group(['middleware' => 'dateset'], function () {
         Route::get('orders/factory', 'Admin\OrderController@factory')->name('admin.orders.factory');

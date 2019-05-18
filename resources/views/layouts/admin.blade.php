@@ -29,7 +29,7 @@
                 <span class="nav-link">Accounts</span>
             </li>
             <li class="nav-item">
-                <span class="nav-link">Winkelperiodes</span>
+                <a class="nav-link" href="{{ route('admin.dates.index') }}">Winkelperiodes</a>
             </li>
         </ul>
     </nav>

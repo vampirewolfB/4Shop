@@ -33,9 +33,9 @@
 				</td>
 				<td>
 					@if($order->delivered)
-						<span class="badge badge-success">geleverd</span>
+						<span class="badge badge-success">opgehaald</span>
 					@else
-						<a href="{{ route('admin.orders.deliver', $order) }}"><span class="badge badge-light">niet geleverd</span></a>
+						<a href="{{ route('admin.orders.deliver', $order) }}"><span class="badge badge-light">wacht op ophalen</span></a>
 					@endif
 				</td>
 			</tr>
