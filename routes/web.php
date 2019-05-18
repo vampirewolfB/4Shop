@@ -42,6 +42,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::post('/set', 'Admin\AdminController@set')->name('admin.set');
     Route::resource('dates', 'Admin\OpeningDatesController', ['as' => 'admin'])->except('show');
     Route::resource('users', 'Admin\UserController', ['as' => 'admin'])->except('show');
+    Route::resource('products', 'Admin\ProductController', ['as' => 'admin'])->except('show');
+    Route::get('products/{product}/types', 'Admin\ProductController@types')->name('admin.products.types');
+    Route::get('products/{product}/types/create', 'Admin\ProductController@types_create')->name('admin.products.types.create');
+    Route::post('products/{product}/types/create', 'Admin\ProductController@types_store')->name('admin.products.types.store');
+    Route::delete('products/{product}/types/{type}', 'Admin\ProductController@types_delete')->name('admin.products.types.delete');
     
     Route::group(['middleware' => 'dateset'], function () {
         Route::get('orders/factory', 'Admin\OrderController@factory')->name('admin.orders.factory');
