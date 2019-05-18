@@ -52,12 +52,6 @@ class ProductController extends Controller
         $rule->product = $product;
         $rule->type = $request->type;
         $rule->size = $request->size;
-        
-
-        // $rule = array();
-        // $rule['product'] = $product->id;
-        // $rule['type'] = $request->type;
-        // $rule['size'] = $request->size;
 
         $request->session()->push('cart', $rule);
         return redirect()->route('cart');
