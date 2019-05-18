@@ -75,4 +75,12 @@ class OrderController extends Controller
             Mail::to($order->email)->send(new \App\Mail\OrderReady($order, $pickup));
         }
     }
+
+    public function packing(Request $request)
+    {
+        $date = OpeningDates::find(session('date'));
+        $orders = $date->orders()->where('payed', true)->get();
+        return view('admin.packing')
+                ->with(compact('orders'));
+    }
 }

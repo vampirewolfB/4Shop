@@ -46,7 +46,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::group(['middleware' => 'dateset'], function () {
         Route::get('orders/factory', 'Admin\OrderController@factory')->name('admin.orders.factory');
         Route::get('orders/mail', 'Admin\OrderController@mail')->name('admin.orders.mail');        
-        Route::post('orders/mail', 'Admin\OrderController@mail_send')->name('admin.orders.mail.send');        
+        Route::post('orders/mail', 'Admin\OrderController@mail_send')->name('admin.orders.mail.send');
+        Route::get('orders/packing', 'Admin\OrderController@packing')->name('admin.orders.packing');  
         Route::resource('orders', 'Admin\OrderController', ['as' => 'admin'])->only(['index', 'show', 'destroy']);
         Route::get('orders/{order}/deliver', 'Admin\OrderController@deliver')->name('admin.orders.deliver');
     });

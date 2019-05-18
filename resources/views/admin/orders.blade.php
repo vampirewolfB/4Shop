@@ -6,7 +6,8 @@
 		<h4>Bestellingen ({{ $date->start->toFormattedDateString() }} - {{ $date->end->toFormattedDateString() }})</h4>
 		<div>
 			<a href="{{ route('admin.orders.factory') }}" target="_blank">Bekijk overzicht voor producent &gt;</a><br />
-			<a href="{{ route('admin.orders.mail') }}">Verstuur mails over ophalen &gt;</a>
+			<a href="{{ route('admin.orders.mail') }}">Verstuur mails over ophalen &gt;</a><br />
+			<a href="{{ route('admin.orders.packing') }}" target="_blank">Print pakbonnen &gt;</a>
 		</div>
 		
 	</div>
