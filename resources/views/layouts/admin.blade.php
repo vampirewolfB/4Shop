@@ -26,7 +26,7 @@
                 <a class="nav-link">Producten</a>
             </li>
             <li class="nav-item">
-                <span class="nav-link">Accounts</span>
+                <a class="nav-link" href="{{ route('admin.users.index') }}">Accounts</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.dates.index') }}">Winkelperiodes</a>
@@ -40,6 +40,16 @@
             @if (session('status'))
                 <div class="alert alert-{{ session('status')[0] }}">
                     {!! session('status')[1] !!}
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
 
