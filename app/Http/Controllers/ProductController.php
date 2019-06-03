@@ -8,34 +8,9 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
-    public function set(Request $request)
-    {
-        if(session('type') == null && $request->route()->getName() != 'leden' && $request->route()->getName() != 'leiding')
-        {
-            return view('home');
-        }
-        elseif($request->route()->getName() == 'leden')
-        {
-            session(['type' => 'leden']);
-        }
-        elseif($request->route()->getName() == 'leiding')
-        {
-            session(['type' => 'leiding']);
-        }
-
-        return redirect()->route('shop');
-    }
-
     public function index()
     {
-        $products = Product::where('active', true);
-        if(session('type') == 'leden')
-        { 
-            $products = $products->where('leiding', false);
-        }
-        $products = $products->orderBy('leiding', 'desc')->get();
-        
+        $products = Product::where('active', true)->get();
         return view('products.index')
                 ->with(compact('products'));
     }

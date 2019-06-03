@@ -15,7 +15,6 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('opening_id')->unsigned();
             $table->string('slug')->nullable();
             $table->string('name');
             $table->string('email');
@@ -23,7 +22,6 @@ class CreateOrdersTable extends Migration
             $table->decimal('amount', 8, 2)->nullable();
             $table->string('mollie_id')->nullable();
             $table->boolean('payed')->default(false);
-            $table->boolean('delivered')->default(false);
             $table->timestamps();
         });
     }

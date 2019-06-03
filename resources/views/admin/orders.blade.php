@@ -3,7 +3,7 @@
 @section('content')
 	
 	<div class="d-flex justify-content-between align-items-center my-4">
-		<h4>Bestellingen ({{ $date->start->toFormattedDateString() }} - {{ $date->end->toFormattedDateString() }})</h4>
+		<h4>Bestellingen</h4>
 		<div>
 			<a href="{{ route('admin.orders.factory') }}" target="_blank">Bekijk overzicht voor producent &gt;</a><br />
 			<a href="{{ route('admin.orders.mail') }}">Verstuur mails over ophalen &gt;</a><br />
@@ -19,7 +19,6 @@
 			<th>Speltak</th>
 			<th>Bedrag</th>
 			<th>Betaling</th>
-			<th>Levering</th>
 		</tr>
 		@foreach($orders as $order)
 			<tr>
@@ -31,13 +30,6 @@
 				<td>&euro;{{ number_format($order->amount, 2) }}</td>
 				<td>
 					{!! $order->payed ? '<span class="badge badge-success">betaald</span>' : '<span class="badge badge-warning">niet betaald</span>' !!}
-				</td>
-				<td>
-					@if($order->delivered)
-						<span class="badge badge-success">opgehaald</span>
-					@else
-						<a href="{{ route('admin.orders.deliver', $order) }}"><span class="badge badge-light">wacht op ophalen</span></a>
-					@endif
 				</td>
 			</tr>
 		@endforeach

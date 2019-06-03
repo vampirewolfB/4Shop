@@ -7,7 +7,7 @@
 				<img src="{{ url($product->image) ?? url('img/placeholder.png') }}" alt="{{ $product->title }}" class="rounded">
 				<div class="product-body">
 					<form action="{{ route('products.order', $product) }}" method="POST" data-controller="size">
-						<h5 class="d-flex justify-content-between"><span>{{ $product->title }}</span><em>&euro;{{ $product->price }}</em></h5>
+						<h5 class="product-title"><span>{{ $product->title }}</span><em>&euro;{{ $product->price }}</em></h5>
 						@unless(empty($product->description))
 							<p>{{ $product->description }}</p>
 						@endunless

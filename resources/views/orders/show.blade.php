@@ -5,7 +5,7 @@
 	@if(!$order->payed)
 		<div class="alert alert-info">
 			<h5 class="alert-heading">Nog niet betaald</h5>
-			<p>Let op: deze bestelling is nog niet betaald. Als u de betaling voldoet voor de sluitingsdatum ({{ $order->opening->end->toFormattedDateString() }}) wordt uw bestelling nog meegenomen. U kunt de bestelling ook nog annuleren.</p>
+			<p>Let op: deze bestelling is nog niet betaald. U kunt de bestelling ook nog annuleren.</p>
 			<hr>
 			<p>
 				<a href="{{ route('ideal.pay', $order) }}" class="alert-link">Nu betalen &gt;</a>
@@ -24,12 +24,6 @@
 				<span class="badge badge-success">Betaald</span>
 			@else
 				<span class="badge badge-warning">Niet betaald</span>
-			@endif
-
-			@if($order->delivered)
-				<span class="badge badge-success">Geleverd</span>
-			@else
-				<span class="badge badge-secondary">Wacht op productie</span>
 			@endif
 		</div>
 	</div>

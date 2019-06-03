@@ -10,9 +10,4 @@ class Order extends Model
    	{
    		return $this->hasMany('App\Order_rule');
    	}
-
-   	public function opening()
-   	{
-   		return $this->belongsTo('App\OpeningDates');
-   	}
 }

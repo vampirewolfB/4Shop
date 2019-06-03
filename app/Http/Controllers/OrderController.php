@@ -43,7 +43,6 @@ class OrderController extends Controller
         ]);
 
         $order = new Order();
-        $order->opening_id = session('opening_id');
         $order->name = $request->name;
         $order->email = $request->email;
         $order->speltak = $request->speltak;
@@ -62,7 +61,7 @@ class OrderController extends Controller
             $order_rule->save();
             $amount += $rule->product->price;
         }
-        
+
         $order->amount = $amount;
         $order->slug = sprintf("%02d%03d", rand(10,99), $order->id);
         $order->save();
@@ -94,14 +93,14 @@ class OrderController extends Controller
         if(empty($cart)) return false;
 
         foreach ($cart as $key => $rule)
-        { 
+        {
             if(!($cart[$key]->type instanceof Type))
             {
                 $cart[$key]->type = Type::find($cart[$key]->type);
             }
             if(!($cart[$key]->size instanceof Size))
             {
-                $cart[$key]->size = Size::find($cart[$key]->size); 
+                $cart[$key]->size = Size::find($cart[$key]->size);
             }
         }
 

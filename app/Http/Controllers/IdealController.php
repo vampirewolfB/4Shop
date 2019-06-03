@@ -30,7 +30,7 @@ class IdealController extends Controller
 
             $order->mollie_id = $payment->id;
             $order->save();
-      
+
             return redirect($payment->getCheckoutUrl());
         }
 

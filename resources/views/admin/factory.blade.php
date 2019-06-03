@@ -21,7 +21,7 @@
         <div class="container m-5">
             
             <h1>Bestelling Scouting Raamsdonksveer</h1>
-            <p class="lead">Afgedrukt op {{ date('d-m-Y') }} voor de periode {{ $date->start->toFormattedDateString() }} - {{ $date->end->toFormattedDateString() }}</p>
+            <p class="lead">Afgedrukt op {{ date('d-m-Y') }}</p>
             <p><em>Let op: enkel volledig betaalde bestelling staan in dit overzicht.</em></p>
 
             <table class="table table-striped table-hover mt-5">

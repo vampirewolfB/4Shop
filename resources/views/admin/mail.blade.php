@@ -3,7 +3,7 @@
 @section('content')
 	
 
-	<h4>Mails versturen ({{ $date->start->toFormattedDateString() }} - {{ $date->end->toFormattedDateString() }})</h4>
+	<h4>Mails versturen</h4>
 	<p>Onderstaande bestellers ontvangen een mail dat hun bestelling klaar ligt. De tekst onder het kopje <em>ophalen</em> moet je hieronder zelf nog invullen.</p>
 
 	<form action="{{ route('admin.orders.mail.send') }}" method="POST">
@@ -20,7 +20,6 @@
 			<th>Speltak</th>
 			<th>Bedrag</th>
 			<th>Betaling</th>
-			<th>Levering</th>
 		</tr>
 		@foreach($orders as $order)
 			<tr>
@@ -32,13 +31,6 @@
 				<td>&euro;{{ number_format($order->amount, 2) }}</td>
 				<td>
 					{!! $order->payed ? '<span class="badge badge-success">betaald</span>' : '<span class="badge badge-warning">niet betaald</span>' !!}
-				</td>
-				<td>
-					@if($order->delivered)
-						<span class="badge badge-success">geleverd</span>
-					@else
-						<a href="{{ route('admin.orders.deliver', $order) }}"><span class="badge badge-light">niet geleverd</span></a>
-					@endif
 				</td>
 			</tr>
 		@endforeach

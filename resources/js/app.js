@@ -1,4 +1,14 @@
 
+///
+/// DEVELOPERS NOTE:
+/// 
+/// De werkende ('gecompileerde') JavaScript-code vind je in de public-map.
+/// Het aanpassen van bestanden in resources/js heeft geen zin, tenzij je deze
+/// gaat compileren met npm. Gebruik deze files alleen ter referentie.
+///
+
+
+
 
 //Stimulus
 import { Application } from "stimulus"

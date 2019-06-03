@@ -8,7 +8,7 @@
 				<img src="{{ $product->image ?? 'img/placeholder.png' }}" alt="{{ $product->title }}" class="rounded">
 				<div class="product-body">
 					<div>
-						<h5 class="d-flex justify-content-between"><span>{{ $product->title }}</span><em>&euro;{{ $product->price }}</em></h5>
+						<h5 class="product-title"><span>{{ $product->title }}</span><em>&euro;{{ $product->price }}</em></h5>
 						@unless(empty($product->description))
 							<p>{{ $product->description }}</p>
 						@endunless

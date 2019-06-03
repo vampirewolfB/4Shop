@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\OpeningDates;
 use App\Product;
 use App\Type;
 use App\Size;
@@ -18,17 +17,10 @@ class DatabaseSeeder extends Seeder
     {
 
         $user = new User();
-        $user->name = "Bart Roos";
-        $user->email = "winkelbeheer@scoutingrveer.nl";
-        $user->password = "$2y$10$Qv9.R7i3w1eDLbDfwegHHO4oGPyjuBL8kHPTtgA0PeJi.P8Kuetk.";
+        $user->name = "Admin User";
+        $user->email = "winkelbeheer@example.com";
+        $user->password = '$2y$10$MlAE0UDpKEi.WIsyNu43s.jxmQ9PzXEyDcMKfSfNOHwOTZxGEJ16m';
         $user->save();
-
-        /////////////////////////////////
-
-        $dates = new OpeningDates();
-        $dates->start = '2019-04-01';
-        $dates->end = '2019-06-01';
-        $dates->save();
 
         /////////////////////////////////
 
