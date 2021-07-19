@@ -15,23 +15,25 @@ class IdealController extends Controller
 
         if($order->payed == false)
         {
-             $payment = Mollie::api()->payments()->create([
-                "amount"      => [
-                    "currency" => "EUR",
-                    "value" => $order->amount
-                ],
-                "description" => "Scouting Rveer Winkel #" . $order->slug,
-                "redirectUrl" => url('ideal/finish/' . $order->id),
-                "method"      => 'ideal',
-                "metadata"    => json_encode([
-                    'order_slug' => $order->slug
-                ])
-            ]);
+            //  $payment = Mollie::api()->payments()->create([
+            //     "amount"      => [
+            //         "currency" => "EUR",
+            //         "value" => $order->amount
+            //     ],
+            //     "description" => "Scouting Rveer Winkel #" . $order->slug,
+            //     "redirectUrl" => url('ideal/finish/' . $order->id),
+            //     "method"      => 'ideal',
+            //     "metadata"    => json_encode([
+            //         'order_slug' => $order->slug
+            //     ])
+            // ]);
 
-            $order->mollie_id = $payment->id;
-            $order->save();
+            // $order->mollie_id = $payment->id;
+            // $order->save();
 
-            return redirect($payment->getCheckoutUrl());
+            // return redirect($payment->getCheckoutUrl());
+
+            return redirect()->route('ideal.finish', $order);
         }
 
         return redirect()->back();
@@ -40,22 +42,22 @@ class IdealController extends Controller
 
     public function finish(Request $request, Order $order)
     {
-        $payment = Mollie::api()->payments()->get($order->mollie_id);
+        // $payment = Mollie::api()->payments()->get($order->mollie_id);
 
-        if ($payment->isPaid())
-        {
+        // if ($payment->isPaid())
+        // {
             $order->payed = true;
             $order->save();
             $request->session()->flash('status', ['success', 'Betaling gelukt!']);
-        }
-		elseif($payment->isOpen() || $payment->isPending())
-		{
-			$request->session()->flash('status', ['warning', 'Wacht nog op bevestiging van uw bank...']);
-		}
-		else
-		{
-			$request->session()->flash('status', ['danger', 'Betaling niet gelukt!']);
-		}
+        // }
+		// elseif($payment->isOpen() || $payment->isPending())
+		// {
+		// 	$request->session()->flash('status', ['warning', 'Wacht nog op bevestiging van uw bank...']);
+		// }
+		// else
+		// {
+		// 	$request->session()->flash('status', ['danger', 'Betaling niet gelukt!']);
+		// }
 
         Mail::to($order->email)->send(new \App\Mail\OrderPlaced($order));
 
