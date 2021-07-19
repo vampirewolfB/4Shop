@@ -31,6 +31,12 @@ class DatabaseSeeder extends Seeder
         $product->leiding = true;
         $product->image = 'img/hoody.png';
         $product->save();
+        $product->refresh();
+        if(array_key_exists('discount', $product->getAttributes()))
+        {
+            $product->discount = 12.50;
+            $product->save();
+        }
 
         $type = new Type();
         $type->product_id = $product->id;
