@@ -25,7 +25,7 @@
 		</p>
 	</div>
 	<div class="ml-5 w-50 text-right">
-		<img src="{{ url($product->image) ?? url('img/placeholder.jpg') }}" alt="{{ $product->title }}" class="rounded mw-100">
+		<img src="{{ url($product->image ?? 'img/placeholder.jpg') }}" alt="{{ $product->title }}" class="rounded mw-100">
 	</div>
 </div>
 <hr class="my-5">
