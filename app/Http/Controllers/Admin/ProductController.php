@@ -29,7 +29,7 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'active' => 'required|boolean',
             'leiding' => 'required|boolean',
-            'image' => 'required|image',
+            'image' => 'nullable|image',
             'description' => 'nullable'
         ]);
 
@@ -39,7 +39,10 @@ class ProductController extends Controller
         $product->active = $request->active;
         $product->leiding = $request->leiding;
         $product->description = $request->description;
-        $product->image = $request->image->store('img');
+        if($request->hasFile('image'))
+        {
+            $product->image = $request->image->store('img');
+        }
         $product->save();
         return redirect()->route('admin.products.types', $product);
     }
