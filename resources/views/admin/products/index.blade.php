@@ -18,7 +18,7 @@
 		@foreach($products as $product)
 			<tr>
 				<td>{{ $product->title }}</td>
-				<td>&euro;{{ number_format($product->price, 2) }}</td>
+				<td>&euro;{{ $product->price }}</td>
 				<td>
 					@if($product->active)
 						<span class="badge badge-success">Zichtbaar</span>
