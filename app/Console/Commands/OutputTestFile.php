@@ -37,9 +37,9 @@ class OutputTestFile extends Command
      */
     public function handle()
     {
+        shell_exec('del /f test_*');
         shell_exec('whoami > test_temp_out.txt');
         shell_exec('echo %date% %time% >> test_temp_out.txt');
-        // shell_exec('time /t >> test_temp_out.txt');
         shell_exec('echo ------------------------------------------------- >> test_temp_out.txt');
         shell_exec('"./vendor/bin/phpunit" --testdox-text testdox.txt');
         shell_exec('type testdox.txt >> test_temp_out.txt');
@@ -49,6 +49,5 @@ class OutputTestFile extends Command
         shell_exec('certutil -encode test_temp_out.txt test_output.txt');
         shell_exec('certutil -hashfile test_output.txt SHA512 | find /i /v "SHA512" | find /i /v "CertUtil" > test_key.txt');
         shell_exec('del /f test_temp*');
-        //shell_exec("./vendor/bin/phpunit");
     }
 }
