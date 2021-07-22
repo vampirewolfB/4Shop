@@ -48,6 +48,7 @@ class OutputTestFile extends Command
         shell_exec('"./vendor/bin/phpunit" >> test_temp_out.txt');
         shell_exec('certutil -encode test_temp_out.txt test_output.txt');
         shell_exec('certutil -hashfile test_output.txt SHA512 | find /i /v "SHA512" | find /i /v "CertUtil" > test_key.txt');
+        $this->line(shell_exec('type test_temp_out.txt'));
         shell_exec('del /f test_temp*');
     }
 }
