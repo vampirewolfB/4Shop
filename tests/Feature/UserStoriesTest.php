@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class BasicTest extends TestCase
+class UserStoriesTest extends TestCase
 {
     public function test_REQ2_PublicCategoryPage()
     {
