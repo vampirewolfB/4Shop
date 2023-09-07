@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,6 +8,6 @@ class Order extends Model
 {
     public function rules()
    	{
-   		return $this->hasMany('App\Order_rule');
+   		return $this->hasMany(Order_rule::class);
    	}
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
-use App\Order_rule;
-use App\Product;
-use App\Type;
-use App\Size;
+use App\Models\Order;
+use App\Models\Order_rule;
+use App\Models\Product;
+use App\Models\Type;
+use App\Models\Size;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller

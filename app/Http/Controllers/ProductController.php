@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\Order_rule;
+use App\Models\Product;
+use App\Models\Order_rule;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller

@@ -4,7 +4,11 @@
 	@foreach($cart as $key => $rule)
 		<tr>
 			<td>{{ $rule->product->title }}</td>
-			<td>{{ $rule->type->title }} {{ $rule->size->title }}</td>
+			<td>{{ $rule->type->title }}
+                @if($rule->size)
+                    {{ $rule->size->title }}
+                @endif
+            </td>
 			<td class="text-right">&euro;{{ $rule->product->price }}</td>
 			@if($remove)
 				<td class="text-right"><a href="{{ route('cart.remove', $key) }}">X</a></td>

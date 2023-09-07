@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Product;
-use App\Type;
-use App\Size;
-use App\User;
+use App\Models\Product;
+use App\Models\Type;
+use App\Models\Size;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
