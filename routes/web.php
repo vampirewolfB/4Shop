@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdealController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,6 +57,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 
 });
 
-//Auth::routes(['register' => false]);
+Route::view('/login', 'auth.login')->name('login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
