@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Order;
-use App\Order_rule;
+use App\Models\Order;
+use App\Models\Order_rule;
 use DB;
 use Mail;
 

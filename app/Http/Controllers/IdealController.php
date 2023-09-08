@@ -59,7 +59,7 @@ class IdealController extends Controller
 		// 	$request->session()->flash('status', ['danger', 'Betaling niet gelukt!']);
 		// }
 
-        Mail::to($order->email)->send(new \App\Mail\OrderPlaced($order));
+        //Mail::to($order->email)->send(new \App\Mail\OrderPlaced($order));
 
 		$request->session()->reflash();
         return redirect()->route('order.show', [$order, $order->slug]);
